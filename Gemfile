@@ -7,6 +7,13 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 #[Jerry] use device to user system
 gem 'devise'
 
+#[Jerry] add for looking good
+gem 'twitter-bootstrap-rails'
+
+#[Jerry] add for looking good
+gem 'devise-bootstrap-views'
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
