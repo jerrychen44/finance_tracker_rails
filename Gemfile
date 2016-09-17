@@ -13,6 +13,10 @@ gem 'twitter-bootstrap-rails'
 #[Jerry] add for looking good
 gem 'devise-bootstrap-views'
 
+#[Jerry] add for stock quote feature
+#https://github.com/tyrauber/stock_quote
+gem 'stock_quote'
+
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
