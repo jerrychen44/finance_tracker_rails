@@ -23,13 +23,14 @@
 <!--If you find the ticker, who to display-->
 <!--If I have the @stock instance create by stocks_controller.rb-->
   <% if @stock %>
-    <div id='stock-lookup-results' class="well resultes-block">
+    <div id='stock-lookup-results' class="well result-block">
       <strong>Symbol:</strong> <%= @stock.ticker %>
       <strong>Name:</strong> <%= @stock.name %>
       <strong>Price:</strong> <%= @stock.price %>
     </div>
   <% end %>
-
+<!--for quote error-->
+  <div id='stock-lookup-errors'></div>
 
 
 
