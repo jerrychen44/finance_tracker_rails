@@ -15,3 +15,15 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+//[Jerry] add this to control when to show the spinner or not in stocks.js
+var hide_spinner = function(){
+
+  $('#spinner').hide();
+}
+
+
+var show_spinner= function(){
+
+  $('#spinner').show();
+}
