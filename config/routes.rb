@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   #[Jerry] set root to go welcome/index page
   root 'welcome#index'
   #[Jerry] implement the portfolio page, will need to implement the users controller by myself
-  get 'my_protfolio', to: "users#my_protfolio"
+  get 'my_portfolio', to: "users#my_portfolio"
+
+  #[Jerry] add stock UI, we add serach_stocks here first, build the serach_stocks in controlers/ and add the search method inside it later.
+  get 'search_stocks', to: "stocks#search"
 
 end
