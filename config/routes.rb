@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :user_stocks
+  #resources :user_stocks
   devise_for :users
+  #[Jerry] just be save, we move the resources :user_stocks to under the devise_for :users
+  #because this user_stocks table need the user model.
+  resources :user_stocks, except: [:show, :edit,:update] # we don't need these feature,we only need the create, destory action
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #[Jerry] set root to go welcome/index page
   root 'welcome#index'

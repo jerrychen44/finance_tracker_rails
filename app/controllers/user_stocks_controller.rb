@@ -24,11 +24,41 @@ class UserStocksController < ApplicationController
   # POST /user_stocks
   # POST /user_stocks.json
   def create
-    @user_stock = UserStock.new(user_stock_params)
+    #[Jerry] we pass in many parameter from _lookup.html.erb line:34
+    #we can use these parameter by params[] hash.
+    if params[:stock_id].present?
+      #if there is a stock passed from view with the valid stock_id
+
+
+      #copy from below, and change the parameter to fit our table
+      #stock_id, user_id: (you give it the user, it will automaticly get the user_id)
+      @user_stock = UserStock.new(stock_id: params[:stock_id], user: current_user)
+    else # this stock id not in oure database
+      #if the stock id is nil or somting not valid
+      #find from db. (find_by_ticker comes from models/stock.rb)
+      stock = Stock.find_by_ticker(params[:stock_ticker])
+      if stock #if find db successfully.we set it to the user_stock table
+        @user_stock = UserStock.new(user: current_user, stock: stock)
+      else# find ticker in db failed
+        #we find the stock from yahoo
+        stock = Stock.new_from_lookup(params[:stock_ticker])
+        if stock.save # if the stock is valid and save successfully, we created_at the relatetion on user_stock table
+          @user_stock = UserStock.new(user: current_user, stock: stock)
+        else
+          @user_stock = nil
+          flash[:error] = "Stock is not available"
+        end
+      end
+    end
+
+
+    #@user_stock = UserStock.new(user_stock_params)
 
     respond_to do |format|
       if @user_stock.save
-        format.html { redirect_to @user_stock, notice: 'User stock was successfully created.' }
+        #[Jerry] if save successfully, go to my_portfolio page
+        format.html { redirect_to my_portfolio_path, notice: "Stock #{@user_stock.stock.ticker}
+                                                      successfully added" }
         format.json { render :show, status: :created, location: @user_stock }
       else
         format.html { render :new }

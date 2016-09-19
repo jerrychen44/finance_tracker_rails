@@ -13,9 +13,6 @@ class StocksController < ApplicationController
       #[Jerry] for testing, you can using http://localhost:3000/search_stocks?stock=GOOG
       #and will get the {"id":null,"ticker":"GOOG","name":"Alphabet Inc.","last_price":"769.75","created_at":null,"updated_at":null}
       #render json: @stock
-
-
-
       #[Jerry] we will build the partial _lookup later
       render partial: 'lookup'
     else
