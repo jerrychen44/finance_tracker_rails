@@ -1,8 +1,17 @@
 class Stock < ApplicationRecord
-#this is add by stock_quote
-#since we don't have to link with the instance
-#we will define to the class method
-#[Jerry]
+
+  #[Jerry] add association to user_stock table
+  # use the table name "user_stocks" here.(check the db/migrate/)
+  #the rule of has_mane. The parameter is modle name with pluralized.(user_stock"s")
+  has_many :user_stocks
+  has_many :users, through: :user_stocks
+
+
+
+  #this is add by stock_quote
+  #since we don't have to link with the instance
+  #we will define to the class method
+  #[Jerry]
 
   def self.find_by_ticker(ticker_symbol)
     where(ticker: ticker_symbol).first
