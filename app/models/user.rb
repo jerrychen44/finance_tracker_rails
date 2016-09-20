@@ -11,6 +11,10 @@ class User < ApplicationRecord
    # you can use user = User.first, then user.stocks to link to stocks which this user have
    has_many :user_stocks
    has_many :stocks, through: :user_stocks
+   
+   #[Jerry] add for friend system
+   has_many :friendships
+   has_many :friends, through: :friendships
 
    #[Jerry] return the full name
    def full_name

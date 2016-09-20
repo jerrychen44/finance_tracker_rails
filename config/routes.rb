@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   #[Jerry] add stock UI, we add serach_stocks here first, build the serach_stocks in controlers/ and add the search method inside it later.
   get 'search_stocks', to: "stocks#search"
 
+
+  #[Jerry] add for friend system
+  get 'my_friends', to: 'users#my_friends'
 end
