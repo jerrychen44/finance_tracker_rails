@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   #[Jerry] add for friend system
   get 'my_friends', to: 'users#my_friends'
+  resources :users, only: [:show]
+  resources :friendships
 end

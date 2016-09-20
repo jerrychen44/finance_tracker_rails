@@ -1,1 +1,44 @@
-<h1>My friends </h1>
+<!--we markit up first, because we don't have this _lookup.html.erb yet-->
+<%#= render 'friends/lookup' %>
+
+<!--@ friendships gets from user controller-->
+<% if @friendships.size > 0 %>
+  <!--we want to list all friends the user have. just likes list the stocks. so go to stocks/_list.html.erb and copy it.-->
+  <table class="table table-striped">
+    <thread>
+      <tr>
+        <th colspan="3" class="page-header">
+          <h2>My Friends</h2>
+        </th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thread>
+
+    <tbody>
+      <% @friendships.each do |friend| %>
+        <tr>
+          <td><%= friend.full_name %></td>
+          <td><%= friend.email %></td>
+
+          <td> <!--we don't have the user_path and friendship_path yet, create in routes later-->
+            <%= link_to 'View Profile', user_path(friend), class:"btn btn-primary btn-xs"%>
+            <%= link_to 'Remove Friend' , friendship_path(friend), :method => :delete,
+                                                                :data => {:confirm=>"Are you sure?"},
+                                                                :class => "btn btn-xs btn-danger"%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </talbe>
+
+<% else %>
+
+  <div class='row col-lg-12'>
+    <p class="lead">You don't have any friends yet. Please add some!</p>
+  </div>
+
+<% end %>
