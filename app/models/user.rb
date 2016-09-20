@@ -12,6 +12,12 @@ class User < ApplicationRecord
    has_many :user_stocks
    has_many :stocks, through: :user_stocks
 
+   #[Jerry] return the full name
+   def full_name
+     return "#{first_name} #{last_name}".strip if (first_name || last_name)
+     "Anonymouse"
+   end
+
 
    #[Jerry] to restric user can only track 10 stocks.
    #we can use these function on view
