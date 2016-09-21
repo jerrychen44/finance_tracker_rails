@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
+
+// [Jerry] the first time do the friend search will have no response.
+// remove turbolinks for above issue. remvoe the "="
+// require turbolinks
 //= require_tree .
 
 //[Jerry] add this to control when to show the spinner or not in stocks.js

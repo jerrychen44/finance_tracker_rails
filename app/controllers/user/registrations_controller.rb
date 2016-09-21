@@ -13,8 +13,8 @@ class User::RegistrationsController < Devise::RegistrationsController
     #devise_parameter_sanitizer.for(:account_update).push(:first_name, :last_name)
 
     #adive by the Q&A in other people
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
 
 end

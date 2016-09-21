@@ -25,4 +25,9 @@ Rails.application.routes.draw do
   get 'my_friends', to: 'users#my_friends'
   resources :users, only: [:show]
   resources :friendships
+
+  #[Jerry] for search friend, add search adn add_friend in user controller later
+  get 'search_friends', to: 'users#search'
+  #we want to really add the association with friend, so use post.
+  post 'add_friend', to: 'users#add_friend'
 end

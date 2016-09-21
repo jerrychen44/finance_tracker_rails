@@ -11,13 +11,14 @@ class User < ApplicationRecord
    # you can use user = User.first, then user.stocks to link to stocks which this user have
    has_many :user_stocks
    has_many :stocks, through: :user_stocks
-   
+
    #[Jerry] add for friend system
    has_many :friendships
    has_many :friends, through: :friendships
 
    #[Jerry] return the full name
    def full_name
+
      return "#{first_name} #{last_name}".strip if (first_name || last_name)
      "Anonymouse"
    end
@@ -42,6 +43,64 @@ class User < ApplicationRecord
      user_stocks.where(stock_id: stock.id).exists?
    end
 
+
+
+
+
+   #[Jerry] add because add search friend.
+    def not_friends_with?(friend_id)
+
+      friendships.where(friend_id: friend_id).count < 1
+
+    end
+
+    def except_current_user(users)
+      #looping all users, and to rejecet the user who the userid=selfid
+      #and left the others.
+      users.reject {|user| user.id == self.id}
+
+    end
+
+    def self.search(param)
+
+
+      return User.none if param.blank?
+
+      param.strip!
+      param.downcase!
+
+      #the three function build below
+      #puts (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
+      (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
+
+
+    end
+
+    def self.first_name_matches(param)
+
+      matches('first_name', param)
+
+    end
+
+    def self.last_name_matches(param)
+
+      matches('last_name', param)
+
+    end
+
+    def self.email_matches(param)
+
+      matches('email', param)
+
+    end
+
+    def self.matches(field_name, param)
+      #the %#{param}% will search likely, not ==
+      #we hope people key in the search keywork
+      #can find out in first name, last name and email
+      where("lower(#{field_name}) like ?", "%#{param}%")
+
+    end
 
 
 end
