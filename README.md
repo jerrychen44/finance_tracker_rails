@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Demo site : https://finance-tracker-rails04.herokuapp.com/my_friends
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Main feature:
+1. devise sing in /out /cancel account.
+2. quote stock from yahoo.
+3. add tracing stock on user tracking list.
+4. can add/remove friends.
+5. can view the tracing stock of friend. 
